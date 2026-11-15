@@ -11,6 +11,16 @@ import { path } from '../utils/paths';
   description="404 error, page not found"
   noindex
 >
+  <!--
+    GitHub Pages treats "/work/page/" and "/work/page" as two different addresses.
+    If someone arrives with the extra slash at the end, send them to the right page.
+  -->
+  <script is:inline>
+    if (location.pathname.length > 1 && location.pathname.endsWith('/')) {
+      location.replace(location.pathname.replace(/\/+$/, '') + location.search + location.hash);
+    }
+  </script>
+
   <section class="not-found">
     <div class="container not-found__inner">
       <h1 class="title">404<br />Page not found</h1>
