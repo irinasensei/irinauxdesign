@@ -1,0 +1,157 @@
+---
+// Case study: Nikko Asset Management - Design System.
+// All wording is taken unchanged from the original Framer site.
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import Arrow from '../../components/Arrow.astro';
+---
+
+<CaseStudyLayout slug="nikko-asset-management---design-system">
+  <section class="container case-section">
+    <h2>Project overview</h2>
+
+    <h3 class="subtitle">Context &amp; Problem</h3>
+    <p>
+      Nikko Asset Management's digital presence had grown organically over a decade — six regional
+      websites, built at different times, by different teams, with different conventions. When a
+      major redesign was approved, the brief covered three priorities simultaneously: visual refresh,
+      faster time-to-market for investment content, and a meaningful reduction in the site's carbon
+      footprint as part of a broader sustainability repositioning.
+    </p>
+    <p>
+      We moved fast. Design and development ran in parallel, and by the time the first release
+      shipped, the cracks were showing: duplicate components with subtle, unintentional variations,
+      HEX values hardcoded instead of referenced from styles (some of which weren't even the correct
+      brand colours), and a recurring pattern where something would look right in Figma and land
+      wrong in staging. Designers and marketing would catch it in UAT, developers would fix it, and
+      the cycle would repeat.
+    </p>
+    <p><strong>The rework wasn't anyone's fault — it was a systems problem.</strong></p>
+    <p>No one had stepped back to build the foundation before building the house.</p>
+  </section>
+
+  <section class="container case-section">
+    <h2>My role &amp; collaboration</h2>
+    <p>
+      After the first release, I led a retrospective with the team. The patterns were clear:
+      inconsistency, rework, and a growing gap between design intent and what was actually being
+      built. I made the case for a design system — not as a nice-to-have, but as the fix for a
+      problem that was already costing us time on every release.
+    </p>
+    <p>
+      I secured budget for a shared Figma training so that myself, a fellow designer, and our
+      front-end developer were working from the same mental model. From there I led the system's
+      structure and governance, my fellow designer helped clean up and rebuild components, and our
+      developer provided feedback on the architecture and implemented the token structure in code. I
+      also owned documentation and rollout — including building a drag-and-drop page builder for the
+      marketing team within our CMS and running a teach-in session so they could ship campaign pages
+      independently.
+    </p>
+  </section>
+
+  <section class="container case-section case-section--prose">
+    <h2>Process</h2>
+
+    <h3 class="subtitle"><Arrow />Audit first</h3>
+    <p>
+      Before touching a single component, I audited both the live site and the Figma files. What I
+      found:
+    </p>
+    <p>
+      Colour was the most urgent problem. Dozens of instances used hardcoded HEX values instead of
+      colour styles — and some of those values were incorrect, not even matching our brand palette.
+      The site had also just launched dark and light modes, and Figma had just released variables.
+      The timing was fortunate: switching from colour styles to variables meant we could build a
+      proper semantic token layer that aligned directly with how the developers were structuring
+      things in code. Designing a new page that needed to work in both modes went from requiring six
+      separate frames to a single frame with a mode toggle. Roughly ten times faster.
+    </p>
+    <p>
+      Component sprawl was the second problem. A content block with an image left and text right
+      could appear in twenty slightly different forms — different font sizes, slightly different
+      spacing — not by design decision, but by drift. We audited every component, identified which
+      variations were intentional and worth keeping, and consolidated the rest. Twenty variations of
+      the same block became one component with properly defined variants. Eighty button variations
+      became twelve.
+    </p>
+
+    <h3 class="subtitle"><Arrow />What we prioritised first</h3>
+    <p>
+      We followed a loose atomic design hierarchy: colour and typography tokens first, then
+      high-frequency components like buttons and text blocks, then composite components, and finally
+      the one-off elements used only once or twice across the whole system. Starting with tokens
+      meant that every component built afterwards inherited the right values automatically.
+    </p>
+
+    <h3 class="subtitle"><Arrow />Collaboration rhythm</h3>
+    <p>
+      I structured the process around biweekly reviews: we'd check progress, resolve any structural
+      questions, and align on the next sprint. Naming conventions were a recurring conversation — we
+      defaulted to matching what already existed in code, and when something was ambiguous we'd get
+      on a quick call to agree rather than let each person decide independently. Once the system was
+      complete, I ran a session with the broader development team to walk through how everything was
+      now organised and what had changed.
+    </p>
+
+    <h3 class="subtitle"><Arrow />Structure &amp; documentation</h3>
+    <p>
+      The Figma file was organised alphabetically within three tiers roughly following atomic design
+      principles. Documentation lived inside Figma — annotations on components, usage guidance on
+      each page. For the marketing team I also wrote a plain-language manual and ran a hands-on
+      teach-in covering the drag-and-drop builder we'd created within the CMS.
+    </p>
+  </section>
+
+  <section class="container case-section case-section--prose">
+    <h2>Results</h2>
+
+    <h3 class="subtitle">Key Decisions</h3>
+    <p>
+      <strong>1. Variables over colour styles for dark/light mode</strong> When Figma launched
+      variables we made the switch immediately. Building a semantic token layer — with names like
+      surface/primary rather than raw colour values — meant that dark and light mode weren't two
+      separate design tracks. One component, one frame, one toggle. This decision alone had the
+      biggest impact on design velocity going forward.
+    </p>
+    <p>
+      <strong>2. Consolidation over preservation</strong> The temptation in a design system audit is
+      to keep everything and just organise it. We made a deliberate choice to ask:
+      <em>is this variation intentional, and does it need to exist?</em> Most of the time the answer
+      was no. Fewer components, maintained properly, are worth more than a comprehensive library that
+      drifts again within six months.
+    </p>
+    <p>
+      <strong>3. Gradual alignment to protect the live site</strong> Rather than a big-bang
+      migration, we aligned design and code incrementally — one component family at a time. This
+      meant the live site was never at risk, and developers could integrate the system into their
+      workflow progressively rather than absorbing a complete overhaul at once.
+    </p>
+
+    <h3 class="subtitle">Outcomes</h3>
+    <ul>
+      <li>
+        <strong>44 → 12 button variants</strong> — through variables and proper state management
+      </li>
+      <li>
+        <strong>Zero UAT comments on visual inconsistencies</strong> in the second release, compared
+        to recurring rework in the first
+      </li>
+      <li>
+        <strong>Marketing team shipped their first campaign page in under a day</strong>, with no
+        design or development support
+      </li>
+      <li>
+        <strong>Design-to-staging accuracy improved significantly</strong> — developers confirmed
+        that building with the system was meaningfully faster and required less back-and-forth
+      </li>
+      <li>All developers adopted the system into their standard workflow following the handoff session</li>
+    </ul>
+
+    <h2>What I'd Do Differently</h2>
+    <p>
+      Running design and development in parallel under time pressure is sometimes unavoidable. But if
+      I could go back, I'd advocate for at least two weeks of token and component foundation work
+      before the first page was built. The cost of retrofitting a system is higher than the cost of
+      building one upfront — that's now something I make the case for at the start of every project.
+    </p>
+  </section>
+</CaseStudyLayout>

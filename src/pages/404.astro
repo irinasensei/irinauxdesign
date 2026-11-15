@@ -1,0 +1,33 @@
+---
+// Shown when someone opens an address that does not exist.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { site } from '../data/site';
+import { path } from '../utils/paths';
+---
+
+<BaseLayout
+  title={`Page not found · ${site.name}`}
+  description="404 error, page not found"
+  noindex
+>
+  <section class="not-found">
+    <div class="container not-found__inner">
+      <h1 class="title">404<br />Page not found</h1>
+      <Button href={path('/')}>Go home</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding-block: clamp(8.75rem, 8.18rem + 2.42vw, 10rem);
+    background: var(--lavender);
+  }
+
+  .not-found__inner {
+    display: grid;
+    gap: 2rem;
+    justify-items: start;
+  }
+</style>

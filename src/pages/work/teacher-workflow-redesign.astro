@@ -1,0 +1,214 @@
+---
+// Case study: Rex Academy — Teacher Workflow Redesign.
+// All wording is taken unchanged from the original Framer site.
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import Figure from '../../components/Figure.astro';
+import Gallery from '../../components/Gallery.astro';
+
+import beforeAfter from '../../assets/images/rex-academy/01.png';
+import userResearch from '../../assets/images/rex-academy/02.png';
+import wireframes from '../../assets/images/rex-academy/03.png';
+import styleGuide from '../../assets/images/rex-academy/04.png';
+import finalDesigns from '../../assets/images/rex-academy/05.png';
+---
+
+<CaseStudyLayout slug="teacher-workflow-redesign">
+  <section class="container case-section case-section--details">
+    <h2>Project overview</h2>
+
+    <h3 class="label">Client</h3>
+    <p>
+      Rex Academy — a technology education platform helping K-12 teachers deliver Computer Science
+      courses in a fun and engaging way.
+    </p>
+
+    <h3 class="label">Project scope</h3>
+    <p>
+      Dashboard and core workflow redesign for teachers managing courses, assignments, and student
+      submissions.
+    </p>
+
+    <h3 class="label">Goal</h3>
+    <p>
+      Reduce friction in teachers' daily workflows by simplifying navigation, surfacing key actions
+      from a single screen, and making the platform intuitive for educators with no CS background.
+    </p>
+  </section>
+
+  <section class="container case-section case-section--details">
+    <h2>My role &amp; collaboration</h2>
+
+    <h3 class="label">Role</h3>
+    <p>UX / Product Designer (Dashboard focus)</p>
+
+    <h3 class="label">Responsibilities</h3>
+    <ul>
+      <li>Contributed to research synthesis and problem framing</li>
+      <li>Led dashboard redesign from concept to final UI</li>
+      <li>Conducted card sorting and usability testing</li>
+      <li>Iterated designs based on user and stakeholder feedback</li>
+    </ul>
+
+    <h3 class="label">Team</h3>
+    <ul>
+      <li>UX Designer</li>
+      <li>UI Designer</li>
+      <li>Distributed product team</li>
+    </ul>
+
+    <h3 class="label">Timeline</h3>
+    <p>8 weeks (part-time)</p>
+  </section>
+
+  <section class="container case-section">
+    <h2>Process</h2>
+
+    <h3 class="label">Challenges</h3>
+    <p>
+      <strong>Two very different user types</strong> The platform served teachers who were either
+      coders with no teaching experience, or certified teachers with no coding background. Tomas —
+      our primary persona — was a high school teacher assigned to teach CS with no prior CS
+      knowledge. His core frustration: spending too long figuring out the software instead of
+      focusing on his students.
+    </p>
+    <p>
+      <strong>Non-intuitive navigation</strong> Teachers struggled to find frequently used features.
+      Icons were unclear, navigation labels didn't match their mental models, and key functions were
+      buried under multiple layers.
+    </p>
+    <p>
+      <strong>Inefficient grading flow</strong> Accessing student submissions required 4 separate
+      steps: sign in, navigate to Manage Courses, open a specific course, then open a specific
+      assignment. For teachers grading daily, this added up to significant wasted time.
+    </p>
+    <p>
+      <strong>Information overload on the dashboard</strong> The original dashboard showed a calendar
+      and announcements — but not the things teachers actually needed first: what's happening today,
+      what needs grading, where they left off last class.
+    </p>
+
+    <Figure
+      src={beforeAfter}
+      alt="Before and after comparison of the teacher dashboard. Before: a calendar and announcements. After: today's classes, recent assignments with grading status, a calendar and notes."
+    />
+
+    <h3 class="label">Design approach &amp; solutions</h3>
+    <p>
+      <strong>Dashboard-first workflow</strong> Redesigned the dashboard to immediately surface the
+      three things teachers needed most: today's classes with lesson continuity, recent assignments
+      with grading status, and a calendar. Teachers could now see everything needed to start their
+      day from a single screen.
+    </p>
+    <p>
+      <strong>Submissions in one step</strong> The redesigned dashboard included a Recent Assignments
+      table showing enrolled students, submissions ready to grade, and unsubmitted work — all visible
+      at a glance. What previously required 4 navigation steps now required one.
+    </p>
+    <p>
+      <strong>Reworked course navigation</strong> Card sorting revealed teachers expected the entire
+      course card to be clickable — not just the title link. 100% of usability testing participants
+      tried to click the full card and failed. The redesign made the entire block interactive,
+      matching users' mental models. The new layout also increased courses visible at once from 4
+      (original) to 6 in grid view and 11 in list view, reducing the need to scroll and search.
+    </p>
+    <p>
+      <strong>Lesson continuity</strong> Research showed most teachers tried to resume teaching where
+      they left off, but the original platform gave no indication of progress or next steps. The
+      redesigned course cards surfaced the previous and next lesson directly, eliminating the need to
+      dig into individual courses to reorient.
+    </p>
+    <p>
+      <strong>Recognizable icons and clearer labels</strong> Navigation icons were replaced with
+      standard, recognisable patterns. Actions like restrict access, visibility, and edit were
+      relabelled and given consistent iconography, reducing confusion during task completion.
+    </p>
+    <p>
+      <strong>Color coding and layout flexibility</strong> In response to direct user feedback ("If I
+      could colour code my lessons, that would help me sort data visually"), the redesign introduced
+      colour labels for course cards and a toggle between grid and list layouts, giving teachers
+      control over how they scan their workload.
+    </p>
+  </section>
+
+  <Gallery
+    images={[
+      {
+        src: userResearch,
+        alt: 'User research board with a user journey map, a target user profile of a high school teacher named Tomas, a task flow diagram and an affinity map of sticky notes.',
+      },
+      {
+        src: wireframes,
+        alt: "Two rounds of dashboard wireframes. Round 1 shows an agenda, courses, announcements and messages. Round 2 shows upcoming lessons, students' submissions, tasks and announcements.",
+      },
+      {
+        src: styleGuide,
+        alt: 'Style guide for Rex Academy showing the colour palette, typography, buttons, navigation bars, iconography, dropdown menus, tables, badges and illustrations.',
+      },
+      {
+        src: finalDesigns,
+        alt: "Final designs of the teacher dashboard with today's classes, recent assignments, a calendar and notes, next to a monthly calendar view and forms for adding notes and events.",
+      },
+    ]}
+  />
+
+  <section class="container case-section">
+    <h2>Results</h2>
+
+    <h3 class="label">Outcomes &amp; impact</h3>
+    <p>
+      <strong>Grading efficiency</strong> Accessing student submissions was reduced from 4 steps to
+      1. Teachers could view all submissions, grading status, and outstanding work directly from the
+      dashboard without navigating into individual courses.
+    </p>
+    <p>
+      <strong>Content visibility</strong> The redesigned course view increased visible courses from 4
+      (original layout) to 6 in grid view and 11 in list view — giving teachers faster orientation
+      across their full workload without additional navigation.
+    </p>
+    <p>
+      <strong>Navigation accuracy</strong> 100% of usability testing participants expected the full
+      course card to be clickable. The original platform only made the title link active. The
+      redesign resolved this by making the entire card interactive, eliminating a consistent point of
+      failure.
+    </p>
+    <p>
+      <strong>User validation</strong> Testing confirmed teachers could plan upcoming lessons, track
+      grading status, and resume where they left off — all from the dashboard. Representative
+      feedback:
+    </p>
+    <blockquote>
+      <p>"Showing where they finished last and where they are doing next — that's pretty cool."</p>
+    </blockquote>
+    <blockquote>
+      <p>"I would like to know what I'm doing in the next couple of days. So that's great."</p>
+    </blockquote>
+    <blockquote>
+      <p>"Everything's kind of clean and compact. It looks pretty good."</p>
+    </blockquote>
+    <p>
+      The client expressed strong satisfaction with the final dashboard design and the overall
+      direction of the workflow improvements.
+    </p>
+
+    <h3 class="label">Key learnings &amp; future steps</h3>
+    <p>
+      <strong>Designing for real workflows, not assumed ones</strong> The original dashboard
+      prioritised announcements and a calendar — not because teachers asked for them, but because
+      they were available. Research showed teachers actually needed grading status, lesson
+      continuity, and class activity front and centre. The biggest design decisions came from
+      questioning what was already there, not just improving it.
+    </p>
+    <p>
+      <strong>Specificity over completeness</strong> With an 8-week part-time timeline, attempting to
+      redesign everything would have produced nothing substantial. Focusing on the highest-friction
+      workflows — submissions, course navigation, dashboard orientation — produced the clearest
+      improvements and the most useful testing signal.
+    </p>
+    <p>
+      <strong>Future improvements</strong> If continued, next steps would include heatmaps and screen
+      recordings to validate tool placement in production, further optimisation of secondary
+      workflows based on usage data, and testing the colour-coding system with a larger group of
+      teachers across different school contexts.
+    </p>
+  </section>
+</CaseStudyLayout>

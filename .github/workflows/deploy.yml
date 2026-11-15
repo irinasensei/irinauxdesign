@@ -1,0 +1,66 @@
+# Publishes the site to GitHub Pages.
+# Runs by itself every time a change reaches the "main" branch on GitHub.
+# It can also be started by hand from the repository's "Actions" tab.
+
+name: Publish site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# The minimum this recipe needs: read the code, publish to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# If two changes arrive close together, finish the first publish before starting the next.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build the site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v7
+
+      - name: Install Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Read the Pages settings
+        id: pages
+        uses: actions/configure-pages@v6
+
+      - name: Install the build tools
+        run: npm ci
+
+      # On the temporary github.io address the site lives in a sub-folder.
+      # Once the custom domain is connected, the sub-folder is empty and the site sits at the top level.
+      - name: Build
+        run: npm run build -- --base "${BASE_PATH:-/}"
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+
+      - name: Hand the built site to Pages
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    name: Publish
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

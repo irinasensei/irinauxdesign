@@ -1,0 +1,133 @@
+---
+// Case study: Baby Boom NSK — E-commerce UX Audit & Redesign.
+// All wording is taken unchanged from the original Framer site.
+// The long dash in this file's name is part of the page address and must stay.
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import Figure from '../../components/Figure.astro';
+import Gallery from '../../components/Gallery.astro';
+
+import categoryGrid from '../../assets/images/baby-boom/01.png';
+import nursery from '../../assets/images/baby-boom/02.png';
+---
+
+<CaseStudyLayout slug="baby-boom-nsk-—-e-commerce-ux-audit-redesign">
+  <section class="container case-section">
+    <h2>Project overview</h2>
+    <p>
+      Baby Boom NSK is an online store specializing in baby products, primarily serving parents,
+      relatives, and friends purchasing gifts.
+    </p>
+    <p class="spaced">
+      The objective of the project was to improve usability, strengthen user trust, and simplify the
+      purchasing journey through a research-driven UX audit and redesign.
+    </p>
+    <p>
+      The focus was on identifying friction points in navigation and product discovery, and
+      delivering clear, structured design improvements.
+    </p>
+  </section>
+
+  <section class="container case-section">
+    <h2>My role &amp; collaboration</h2>
+    <p>I worked as a UX Designer, leading:</p>
+    <ul>
+      <li>User research</li>
+      <li>Usability testing</li>
+      <li>UX audit</li>
+      <li>Interface redesign</li>
+      <li>Visual system refinement</li>
+    </ul>
+    <p class="spaced">
+      I delivered structured UX recommendations and redesigned key screens.<br />Implementation was
+      handled by the client’s internal team.
+    </p>
+    <p>
+      Due to budget constraints, not all redesign elements were fully implemented. However,
+      redesigned flows were validated through usability testing.
+    </p>
+  </section>
+
+  <section class="container case-section">
+    <h2>Process</h2>
+    <p>I conducted interviews with key user groups — primarily parents and gift buyers.</p>
+    <p>Usability testing revealed:</p>
+    <ul>
+      <li>Navigation felt confusing</li>
+      <li>Filters were ineffective</li>
+      <li>Product information lacked clarity</li>
+      <li>Absence of reviews reduced trust</li>
+      <li>Product imagery did not feel authentic</li>
+    </ul>
+    <p>These findings shaped all design decisions.</p>
+    <p>Based on research insights, the main usability gaps were identified:</p>
+    <ul>
+      <li>Friction in product discovery</li>
+      <li>Inefficient filtering logic</li>
+      <li>Inconsistent visual hierarchy</li>
+      <li>Weak trust signals</li>
+    </ul>
+    <p>The core challenge was not visual appearance, but clarity and guidance.</p>
+    <p class="spaced">The redesign focused on three strategic goals:</p>
+    <p>
+      <strong>Simplify navigation</strong><br />Improved menu structure and reduced unnecessary
+      steps.
+    </p>
+    <p>
+      <strong>Enhance product discovery</strong><br />Redesigned filters for better precision and
+      relevance.<br />Introduced a category carousel to support browsing behavior.
+    </p>
+    <p>
+      <strong>Strengthen trust &amp; clarity</strong><br />Added customer reviews and expanded
+      product descriptions.<br />Created a more consistent visual system (typography, colors, UI
+      elements).
+    </p>
+  </section>
+
+  <Gallery
+    images={[
+      {
+        src: categoryGrid,
+        alt: 'Two versions of the store’s category grid side by side: one with product photos on a white background, the other with lifestyle photos of babies wearing the products under the heading “Popular categories” in Russian.',
+      },
+    ]}
+  />
+
+  <section class="container case-section">
+    <h2>Results</h2>
+
+    <h3 class="subtitle">Outcomes</h3>
+    <p>Following redesign validation and client feedback:</p>
+    <ul>
+      <li>Users completed purchase tasks more easily during testing</li>
+      <li>Navigation flow became clearer and more intuitive</li>
+      <li>Cart abandonment behavior decreased</li>
+      <li>The overall perception of professionalism and trust improved</li>
+    </ul>
+    <p>
+      While full implementation was limited by budget, usability testing confirmed stronger task
+      completion rates and improved user confidence.
+    </p>
+
+    <h3 class="subtitle">Client Feedback</h3>
+    <p>
+      “We thought our website was working well… until we realized how much we were overlooking. Now
+      everything feels smoother — and it shows in the business.”<br />— Yulia, Owner of Baby Boom
+      NSK
+    </p>
+
+    <h3 class="subtitle">Impact</h3>
+    <p>
+      The redesign went beyond aesthetics. It improved clarity, strengthened trust, and aligned the
+      digital experience with the emotional needs of parents and gift buyers.
+    </p>
+    <p>
+      The updated UX positioned Baby Boom NSK as a more modern, coherent, and customer-focused brand.
+    </p>
+  </section>
+
+  <Figure
+    src={nursery}
+    alt="A smiling woman sitting on a nursery floor, holding up a white baby bodysuit from an open delivery box."
+    size="bleed"
+  />
+</CaseStudyLayout>

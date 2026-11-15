@@ -1,0 +1,58 @@
+---
+// Shared frame for a case-study page: title, summary and cover image at the top,
+// the page's own content in the middle, and the "Next project" link at the end.
+// Title, summary and cover come from src/data/projects.ts, so they always match the homepage card.
+import { Picture, getImage } from 'astro:assets';
+import BaseLayout from './BaseLayout.astro';
+import NextProject from '../components/NextProject.astro';
+import { projects } from '../data/projects';
+import '../styles/case-study.css';
+
+interface Props {
+  /** Which project this page is about: its "slug" in src/data/projects.ts. */
+  slug: string;
+  /** Page heading, when it differs from the title on the homepage card. */
+  heading?: string;
+}
+
+const { slug, heading } = Astro.props;
+
+const project = projects.find((item) => item.slug === slug);
+if (!project) {
+  throw new Error(`No project with the slug "${slug}" in src/data/projects.ts`);
+}
+
+const title = heading ?? project.title;
+
+// Image shown when the page is shared on social media or in chat apps.
+const shareImage = await getImage({ src: project.cover, width: 1200, format: 'jpeg' });
+---
+
+<BaseLayout title={title} description={`${title}, ${project.summary}`} image={shareImage.src}>
+  <article>
+    <header class="case-hero">
+      <div class="container case-hero__text">
+        <h1>{title}</h1>
+        <p class="case-hero__summary subtitle">{project.summary}</p>
+      </div>
+      <div class="case-hero__cover">
+        <Picture
+          src={project.cover}
+          alt={project.coverAlt}
+          formats={['avif']}
+          fallbackFormat="webp"
+          widths={[480, 800, 1280, 1920, 2560]}
+          sizes="100vw"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </header>
+
+    <div class="case-body">
+      <slot />
+    </div>
+  </article>
+
+  <NextProject current={project} />
+</BaseLayout>

@@ -1,0 +1,172 @@
+---
+// Case study: Nikko AM Website Redesign (page heading: "Global Website Redesign").
+// All wording is taken unchanged from the original Framer site.
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import Figure from '../../components/Figure.astro';
+import Gallery from '../../components/Gallery.astro';
+
+import legacyHomepage from '../../assets/images/nikko-website/01.png';
+import empathyMap from '../../assets/images/nikko-website/02.png';
+import persona from '../../assets/images/nikko-website/03.png';
+---
+
+<CaseStudyLayout slug="nikko-am-website-redesign" heading="Global Website Redesign">
+  <section class="container case-section case-section--details">
+    <h2>Project overview</h2>
+
+    <h3 class="label">Client</h3>
+    <p>Nikko Asset Management — a global investment management company</p>
+
+    <h3 class="label">Project scope</h3>
+    <p>
+      Redesign of a 10-year-old legacy website used by multiple internal teams and a broad external
+      audience
+    </p>
+
+    <h3 class="label">Goal</h3>
+    <p>
+      Improve usability and accessibility, significantly reduce the website’s carbon footprint, and
+      create a more maintainable, scalable system for content publishing and future growth.
+    </p>
+  </section>
+
+  <section class="container case-section case-section--details">
+    <h2>My role &amp; collaboration</h2>
+
+    <h3 class="label">Role</h3>
+    <p>Lead UX / Product Designer</p>
+
+    <h3 class="label">Responsibilities</h3>
+    <ul>
+      <li>Led UX strategy and end-to-end design process</li>
+      <li>Defined information architecture and key user flows</li>
+      <li>Designed wireframes and high-fidelity UI</li>
+      <li>Built and documented reusable components</li>
+      <li>Collaborated closely with developers to ensure feasibility and performance</li>
+    </ul>
+
+    <h3 class="label">Team</h3>
+    <ul>
+      <li>Developers</li>
+      <li>Graphic Designer</li>
+      <li>Marketing &amp; Sales stakeholders</li>
+    </ul>
+  </section>
+
+  <section class="container case-section">
+    <h2>Process</h2>
+
+    <h3 class="label">Key challenges</h3>
+    <p>
+      <strong>Poor usability and navigation</strong><br />Users reported the site as difficult to
+      navigate, with unclear hierarchy and limited guidance toward key actions.
+    </p>
+    <p>
+      <strong>High environmental and performance cost</strong><br />The website generated
+      approximately <strong>2 tons of CO<sub>2</sub> per year</strong>, largely due to heavy visual
+      assets and inefficient code.
+    </p>
+    <p>
+      <strong>Weak search and mobile performance</strong><br />Low average search rankings and poor
+      mobile performance limited discoverability and accessibility.
+    </p>
+    <p>
+      <strong>Operational inefficiency</strong><br />Content updates across regions were
+      time-consuming and required technical support, slowing down publishing workflows.
+    </p>
+    <p>
+      <strong>Low engagement with critical content</strong><br />High bounce rates and limited
+      interaction with key sections, including sustainability reports, reduced overall impact.
+    </p>
+
+    <Figure
+      src={legacyHomepage}
+      alt="Annotated screenshot of the legacy Nikko AM homepage before the redesign. Five callouts point to dense global navigation, competing priorities, unprioritised content, heavy visual assets and hidden secondary actions."
+    />
+
+    <h3 class="label">Design approach &amp; solutions</h3>
+    <p>
+      <strong>Reworked information architecture</strong><br />Simplified navigation and clarified
+      content hierarchy by reducing top-level categories and grouping content by user intent. This
+      made key sections such as <em>Invest with Us</em> and <em>Contact Us</em> easier to find and
+      act on, while supporting different user groups across regions.
+    </p>
+    <p>
+      <strong>Lightweight visual design system</strong><br />Introduced a modern, brand-aligned look
+      and feel optimized for performance and accessibility, reducing visual and technical overhead.
+    </p>
+    <p>
+      <strong>Performance- and sustainability-driven design</strong><br />Reduced asset weight and
+      visual complexity to significantly lower CO<sub>2</sub> emissions while improving load times
+      and mobile performance.
+    </p>
+    <p>
+      <strong>CMS modernization and automation</strong><br />Migrated to a modern CMS, introduced
+      automation for cross-regional updates, and replaced static PDFs with HTML pages to improve
+      scalability and maintainability.
+    </p>
+    <p>
+      <strong>SEO-focused content improvements</strong><br />Optimized metadata, refined top-level
+      copy, and improved keyword usage to increase search visibility.
+    </p>
+    <p>
+      <strong>Dynamic and modular content</strong><br />Implemented dynamic content blocks to surface
+      relevant insights and encourage deeper engagement.
+    </p>
+  </section>
+
+  <Gallery
+    images={[
+      {
+        src: empathyMap,
+        alt: 'Empathy map for the general public audience, covered in sticky notes grouped under what they need to do, see, say, do, hear, think and feel.',
+      },
+      {
+        src: persona,
+        alt: 'Persona card for an individual investor, Sarah Lim, a 38-year-old sales manager in Singapore, listing her goals, needs, pain points, interests and personality traits.',
+      },
+    ]}
+  />
+
+  <section class="container case-section">
+    <h2>Results</h2>
+
+    <h3 class="label">Outcomes &amp; impact</h3>
+    <p><strong>Usability &amp; engagement</strong></p>
+    <ul>
+      <li>Usability score improved by <strong>+15 points</strong> (63.8 → 78.8 / 100)</li>
+      <li><strong>70% of users</strong> reported the new site as easy to use and navigate</li>
+      <li><strong>3× increase</strong> in total engagement</li>
+      <li><strong>47% engaged sessions</strong>, up from previous levels</li>
+    </ul>
+    <p><strong>Performance &amp; sustainability</strong></p>
+    <ul>
+      <li>
+        <strong>86% reduction in CO<sub>2</sub> emissions</strong>, reducing annual footprint from 2
+        tons to 0.28 tons
+      </li>
+      <li>Mobile performance score improved by <strong>+22 points</strong></li>
+      <li>Search ranking improved by <strong>4 positions</strong></li>
+      <li>Organic traffic increased by <strong>2%</strong></li>
+    </ul>
+    <p><strong>Content &amp; internal efficiency</strong></p>
+    <ul>
+      <li>Publishing a new article became <strong>6× faster</strong></li>
+      <li>Non-technical users can now create pages in <strong>15–60 minutes</strong></li>
+    </ul>
+
+    <h3 class="label">Key Learnings</h3>
+    <p>
+      <strong>Designing for flexibility</strong><br />An agile, iterative approach allowed the team
+      to respond to evolving requirements without compromising usability or performance.
+    </p>
+    <p>
+      <strong>User-centered decision-making</strong><br />Regular surveys, usability testing, and
+      stakeholder feedback ensured solutions addressed real user needs rather than assumptions.
+    </p>
+    <p>
+      <strong>Data-informed design</strong><br />Analytics and heatmaps were used to validate layout
+      decisions, content hierarchy, and interaction patterns.
+    </p>
+  </section>
+</CaseStudyLayout>

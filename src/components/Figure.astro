@@ -1,0 +1,39 @@
+---
+// One image inside a case study.
+// Smaller, faster-loading versions of the original file are generated automatically.
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  /** Describes the image for people who cannot see it. */
+  alt: string;
+  /**
+   * "text"  – as wide as the text column (default)
+   * "wide"  – as wide as the page content
+   * "bleed" – edge to edge
+   */
+  size?: 'text' | 'wide' | 'bleed';
+}
+
+const { src, alt, size = 'text' } = Astro.props;
+
+// Tells the browser how wide the image is on screen so it can pick the smallest suitable file.
+const settings = {
+  text: { widths: [400, 640, 800, 1200, 1600], sizes: '(min-width: 56rem) 800px, 90vw' },
+  wide: { widths: [480, 800, 1280, 1920, 2560], sizes: '(min-width: 90rem) 1280px, 90vw' },
+  bleed: { widths: [480, 800, 1280, 1920, 2560], sizes: '100vw' },
+}[size];
+---
+
+<figure class:list={['case-figure', `case-figure--${size}`]}>
+  <Picture
+    src={src}
+    alt={alt}
+    formats={['avif']}
+    fallbackFormat="webp"
+    widths={settings.widths}
+    sizes={settings.sizes}
+    loading="lazy"
+  />
+</figure>

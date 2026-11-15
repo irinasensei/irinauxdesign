@@ -1,0 +1,42 @@
+---
+// Dark filled button that is really a link, with an arrow after the text.
+import Arrow from './Arrow.astro';
+
+interface Props {
+  href: string;
+  /** Stretch to the full width of its container. */
+  full?: boolean;
+}
+
+const { href, full = false } = Astro.props;
+---
+
+<a class:list={['button', { 'button--full': full }]} href={href}>
+  <slot /><Arrow />
+</a>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 2rem;
+    border-radius: var(--radius);
+    background: var(--ink);
+    color: var(--paper);
+    font-size: var(--text-button);
+    line-height: 1.25rem;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+  }
+
+  .button:hover {
+    background: var(--ink-deep);
+  }
+
+  .button--full {
+    display: flex;
+    width: 100%;
+  }
+</style>

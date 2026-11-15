@@ -1,0 +1,158 @@
+---
+// Case study: La Casa del Pan de Queso Menu Redesign.
+// All wording is taken unchanged from the original Framer site.
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import Figure from '../../components/Figure.astro';
+import Gallery from '../../components/Gallery.astro';
+
+import research from '../../assets/images/pan-de-queso/01.png';
+import moodboard from '../../assets/images/pan-de-queso/02.png';
+import sketches from '../../assets/images/pan-de-queso/03.png';
+import concepts from '../../assets/images/pan-de-queso/04.png';
+import finalDesigns from '../../assets/images/pan-de-queso/05.png';
+---
+
+<CaseStudyLayout slug="pan-de-queso">
+  <section class="container case-section case-section--details">
+    <h2>Project overview</h2>
+
+    <h3 class="label">Client</h3>
+    <p>La Casa del Pan de Queso — a Brazilian café-bar located in downtown Valencia.</p>
+
+    <h3 class="label">Project scope</h3>
+    <p>Design and implementation of:</p>
+    <ul>
+      <li>an A4 print menu (Spanish &amp; English)</li>
+      <li>a mobile-friendly digital menu accessible via QR code</li>
+    </ul>
+
+    <h3 class="label">Goal</h3>
+    <p>
+      Improve menu readability and accessibility, introduce a cohesive visual identity, and
+      streamline the ordering experience for both local and international customers.
+    </p>
+  </section>
+
+  <section class="container case-section case-section--details">
+    <h2>My role &amp; collaboration</h2>
+
+    <h3 class="label">Role</h3>
+    <p>Product / UX &amp; Graphic Designer (solo)</p>
+
+    <h3 class="label">Responsibilities</h3>
+    <ul>
+      <li>Defined visual direction and basic brand identity</li>
+      <li>Designed bilingual print and digital menus</li>
+      <li>Implemented the digital menu using a no-code platform</li>
+      <li>Balanced usability, visual clarity, and delivery speed</li>
+    </ul>
+
+    <h3 class="label">Timeline</h3>
+    <p>1 week</p>
+  </section>
+
+  <section class="container case-section">
+    <h2>Process</h2>
+
+    <h3 class="label">Challenges</h3>
+    <p>
+      <strong>Bilingual audience in a tourist area</strong><br />The café serves both
+      Spanish-speaking locals and international visitors, while staff do not speak English — making a
+      bilingual menu essential.
+    </p>
+    <p>
+      <strong>Operational bottleneck</strong><br />Only one printed menu was available for a 12-table
+      café, slowing down order-taking and reducing efficiency.
+    </p>
+    <p>
+      <strong>Unstable content</strong><br />Menu items and categories were still evolving during the
+      design process, requiring frequent updates.
+    </p>
+    <p>
+      <strong>Limited assets and budget</strong><br />There was no budget for user research or
+      professional photography, and only a few dishes had images.
+    </p>
+    <p>
+      <strong>Technical and time constraints</strong><br />The digital menu needed to be launched
+      within days using a free, easy-to-maintain no-code solution.
+    </p>
+
+    <Figure
+      src={research}
+      alt="Three research panels. Analyse current state: photos of the old menus and a list of problems, such as one menu for 12 tables and Spanish only. Understand business goals: a print menu in English and Spanish and a QR code with photos. Competitive analysis: menus from other cafés."
+    />
+
+    <h3 class="label">Design solutions</h3>
+    <p>
+      <strong>Readable, bilingual menu structure</strong><br />Designed a clear hierarchy and layout
+      that works equally well in Spanish and English, reducing cognitive load for customers.
+    </p>
+    <p>
+      <strong>Lightweight visual identity</strong><br />Created a simple brand direction inspired by:
+    </p>
+    <ul>
+      <li>the café’s green entrance banner</li>
+      <li>Brazilian color references (green and yellow)</li>
+    </ul>
+    <p>This added personality without overwhelming the content.</p>
+    <p><strong>Typography optimized for scanning</strong></p>
+    <ul>
+      <li>
+        Retained a serif font for the restaurant name to maintain continuity with existing signage
+      </li>
+      <li>Used all caps only for category titles</li>
+      <li>
+        Selected highly readable sans-serif fonts for menu items to improve clarity and legibility
+      </li>
+    </ul>
+    <p>
+      <strong>Mobile-first digital menu</strong><br />Designed and implemented a responsive digital
+      menu optimized for mobile viewing, avoiding PDF formats that perform poorly on phones.
+    </p>
+  </section>
+
+  <Gallery
+    images={[
+      {
+        src: moodboard,
+        alt: 'Moodboard of printed and digital restaurant menu designs collected for inspiration.',
+      },
+      {
+        src: sketches,
+        alt: 'Hand-drawn sketches of menu layouts next to grey wireframes of the La Casa del Pan de Queso print menu.',
+      },
+      {
+        src: concepts,
+        alt: 'Four numbered design concepts for the print menu, each arranging the specials, bocadillos, Brazilian dishes and tapas differently, in green, teal and yellow.',
+      },
+      {
+        src: finalDesigns,
+        alt: 'Final designs: two yellow and green print menu pages, two mobile screens of the digital menu, the printed menu on a café table, the round logo and a QR code with English and Spanish flags.',
+      },
+    ]}
+  />
+
+  <section class="container case-section">
+    <h2>Results</h2>
+
+    <h3 class="label">Outcomes &amp; impact</h3>
+    <p>
+      <strong>Improved operational efficiency</strong><br />All 12 tables now have QR codes linking
+      to the digital menu, eliminating wait times and reducing staff dependency.
+    </p>
+    <p>
+      <strong>Better accessibility for tourists</strong><br />Customers can easily switch between
+      Spanish and English, improving the experience for international visitors.
+    </p>
+    <p>
+      <strong>Positive client and customer feedback</strong><br />The client highlighted the print
+      menu’s clarity and modern feel, while customers responded positively to the ease of use and
+      readability.
+    </p>
+    <p><strong>Future-ready solution</strong><br />The no-code setup allows the client to:</p>
+    <ul>
+      <li>update menu items independently</li>
+      <li>add photos later when available</li>
+    </ul>
+  </section>
+</CaseStudyLayout>

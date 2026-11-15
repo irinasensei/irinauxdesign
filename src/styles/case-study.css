@@ -1,0 +1,168 @@
+/*
+  Styles shared by the five case-study pages.
+
+  Each page is written as ordinary HTML (headings, paragraphs, lists) inside
+  <section class="container case-section">. The rules below give that HTML the
+  type sizes and spacing measured from the original site.
+*/
+
+/* ---------- Hero: title, summary, cover image ---------- */
+
+.case-hero {
+  padding-top: clamp(8.75rem, 8.18rem + 2.42vw, 10rem); /* 140 → 160px */
+  background: var(--lavender);
+}
+
+.case-hero__text {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.case-hero h1 {
+  font-size: var(--text-display);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.case-hero__summary {
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+.case-hero__cover {
+  aspect-ratio: 16 / 9;
+  margin-top: clamp(4rem, 2.409rem + 6.79vw, 7.5rem); /* 64 → 120px */
+  overflow: hidden;
+  /* Soft tint shown for the moment before the image appears. */
+  background: rgb(38 62 74 / 0.06);
+}
+
+.case-hero__cover picture,
+.case-hero__cover img {
+  width: 100%;
+  height: 100%;
+}
+
+.case-hero__cover img {
+  object-fit: cover;
+}
+
+/* ---------- Body: white area holding the sections ---------- */
+
+.case-body {
+  display: grid;
+  gap: 5rem; /* 80px between sections */
+  padding-block: clamp(2.5rem, 1.364rem + 4.85vw, 5rem) 5rem; /* top: 40 → 80px */
+  background: var(--white);
+}
+
+/* A page that ends with an edge-to-edge image runs straight into the next band. */
+.case-body:has(> .case-figure--bleed:last-child) {
+  padding-bottom: 0;
+}
+
+/* ---------- Text sections ---------- */
+
+.case-section > * {
+  max-width: 47.5rem; /* 760px */
+}
+
+/* As on the original site, the two opening sections and all images are slightly wider. */
+.case-body > .case-section:nth-child(-n + 2) > *,
+.case-section > .case-figure {
+  max-width: var(--text-column);
+}
+
+.case-section h2 {
+  font-size: var(--text-title);
+}
+
+.case-section p,
+.case-section li {
+  color: var(--muted);
+}
+
+/* Space above a heading that follows other content. */
+.case-section * + h2,
+.case-section * + h3 {
+  margin-top: 2.25rem;
+}
+
+/* A heading or text directly under a section title sits closer to it. */
+.case-section h2 + * {
+  margin-top: 1rem;
+}
+
+/* Fact lists (Client, Role, Timeline…): label and value pairs, set closer together. */
+.case-section--details * + h3 {
+  margin-top: 1rem;
+}
+
+/* Longer written sections (the design system page) get more air above sub-headings. */
+.case-section--prose * + h3 {
+  margin-top: 3.75rem;
+}
+
+.case-section--prose h2 + h3 {
+  margin-top: 1.5rem;
+}
+
+/* Add class="spaced" to a paragraph that starts a new thought. */
+.case-section .spaced {
+  margin-top: 2rem;
+}
+
+.case-section ul {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.case-section h3 + ul {
+  margin-top: 0.5rem;
+}
+
+/* Arrow in front of a sub-heading ("→ Audit first"). */
+.case-section h3 > .arrow:first-child {
+  margin: 0 0.35em 0 0;
+}
+
+.case-section sub {
+  line-height: 0;
+}
+
+/* Short quotes from testing sessions. */
+.case-section blockquote {
+  margin-block: 1.25rem;
+  padding-left: 1.25rem;
+  border-left: 2px solid rgb(38 62 74 / 0.25);
+  font-style: italic;
+}
+
+/* ---------- Images ---------- */
+
+.case-figure {
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: rgb(38 62 74 / 0.06);
+}
+
+.case-figure picture,
+.case-figure img {
+  width: 100%;
+}
+
+/* Inside a text section: as wide as the text. */
+.case-section .case-figure {
+  margin-top: 1rem;
+}
+
+/* Edge to edge. */
+.case-figure--bleed {
+  border-radius: 0;
+}
+
+/* A stack of wide images between two sections. */
+.case-gallery {
+  display: grid;
+  gap: clamp(1rem, 0.773rem + 0.97vw, 1.5rem); /* 16 → 24px */
+}

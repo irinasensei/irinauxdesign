@@ -1,0 +1,35 @@
+---
+// The old Framer site had five template demo posts under /writing/.
+// They are not part of this site. Each old address gets a tiny page that
+// sends visitors (and search engines) straight to the homepage.
+import { site } from '../../data/site';
+import { path } from '../../utils/paths';
+
+export function getStaticPaths() {
+  const oldPosts = [
+    'making-your-favorite-products',
+    'freelance-product-design-tales',
+    'surviving-the-design-jungle',
+    'product-design-process',
+    'crafting-the-gadget-you-love',
+  ];
+  return oldPosts.map((slug) => ({ params: { slug } }));
+}
+
+const home = path('/');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{site.name}</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={`${site.url}/`} />
+    <meta http-equiv="refresh" content={`0; url=${home}`} />
+  </head>
+  <body>
+    <p>This page has moved. <a href={home}>Go to the homepage</a>.</p>
+  </body>
+</html>

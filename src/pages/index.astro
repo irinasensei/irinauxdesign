@@ -1,0 +1,329 @@
+---
+// Homepage. All wording is taken unchanged from the original Framer site.
+import { Picture } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+import { site } from '../data/site';
+import { path } from '../utils/paths';
+import portrait from '../assets/images/home/irina-portrait.jpg';
+
+const [featuredProject, ...otherProjects] = projects;
+
+const background = [
+  '6+ years in Product & UX Design',
+  'Experience across finance, healthcare, e-commerce, and service platforms',
+  'Worked in international teams across Europe and Japan',
+  'Collaborated closely with product, engineering and business stakeholders from discovery through delivery',
+  'Technical foundation in HTML/CSS, JavaScript, React and Angular, supporting effective collaboration with engineering teams.',
+];
+
+const approach = [
+  {
+    title: 'Simplifying complex products & workflows',
+    text: 'Turning complex requirements and user needs into clear, intuitive experiences.',
+  },
+  {
+    title: 'Building scalable design systems',
+    text: 'Creating reusable components and patterns that improve consistency and design-to-development collaboration.',
+  },
+  {
+    title: 'Turning research into product decisions',
+    text: 'Synthesizing user research, analytics, and business context into actionable design opportunities.',
+  },
+  {
+    title: 'Designing end-to-end experiences',
+    text: 'Working from problem framing and user flows through prototyping, high-fidelity UI, validation, and developer handoff.',
+  },
+];
+---
+
+<BaseLayout title={site.name}>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1 class="title">
+        Senior Product / UX Designer specialising in complex products &amp; scalable design systems
+        — Valencia / EMEA remote
+      </h1>
+      <p>
+        I’m Irina, a Product / UX Designer with <strong>6+ years of experience</strong> designing
+        user-centered B2B and B2C digital products.<br />I work end-to-end — from research and
+        problem framing to high-fidelity design and developer handoff — simplifying complex
+        workflows while balancing user, business, and technical needs.
+      </p>
+      <Button href={path('/#work')}>View case studies</Button>
+    </div>
+  </section>
+
+  <!-- About: What I do best, Background, My approach -->
+  <section id="about" class="about">
+    <div class="container split about__block about__block--intro">
+      <h2 class="title">What I do best</h2>
+      <div class="about__intro">
+        <p>
+          I help teams design intuitive, scalable experiences by combining research insights, strong
+          UX foundations, and practical design systems.
+        </p>
+        <p>Experience with complex products, internal tools, and content-heavy platforms.</p>
+      </div>
+    </div>
+
+    <div class="container split about__block about__block--background">
+      <h2 class="title">Background</h2>
+      <div>
+        <ul class="bullets">
+          {background.map((item) => <li>{item}</li>)}
+        </ul>
+        <div class="about__cv">
+          <Button href={site.cv} full>See full CV</Button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container split about__block about__block--approach">
+      <h2 class="title">My approach</h2>
+      <ul class="approach">
+        {
+          approach.map((item) => (
+            <li>
+              <h3 class="label">{item.title}</h3>
+              <p class="muted">{item.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Selected work -->
+  <section id="work" class="section work">
+    <div class="container">
+      <div class="work__header">
+        <h2 class="title">Selected work</h2>
+        <p class="lead muted">
+          A selection of projects showcasing my approach to research-driven product design.
+        </p>
+      </div>
+      <div class="work__featured">
+        <ProjectCard project={featuredProject} featured />
+      </div>
+      <div class="work__grid">
+        {otherProjects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Get in touch -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="title">Get in touch</h2>
+      <h3 class="subtitle">Have a project in mind?</h3>
+      <div class="contact__body">
+        <div class="contact__text lead muted">
+          <p>
+            If you want to chat about a project — send me an email on{' '}<a
+              href={`mailto:${site.email}`}>{site.email}</a
+            >.
+          </p>
+          <p>
+            I can help designing a new website, designing a new digital product, building a strong
+            design system, and improving user experience of the existing product.
+          </p>
+          <p>Currently based in Valencia, Spain.</p>
+          <p>Open to full-time roles and selected freelance projects.</p>
+        </div>
+        <ul class="contact__links subtitle">
+          <li>
+            <a href={site.linkedin} target="_blank" rel="noopener noreferrer">
+              LinkedIn<span class="visually-hidden"> (opens in a new tab)</span>
+            </a>
+          </li>
+          <li>
+            <a href={site.dribbble} target="_blank" rel="noopener noreferrer">
+              Dribbble<span class="visually-hidden"> (opens in a new tab)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portrait -->
+  <figure class="portrait">
+    <Picture
+      src={portrait}
+      alt="Irina smiling in a blue dress and a party hat, in front of a gold sequin backdrop."
+      formats={['avif']}
+      fallbackFormat="webp"
+      widths={[480, 800, 1200, 1800]}
+      sizes="100vw"
+      loading="lazy"
+    />
+  </figure>
+</BaseLayout>
+
+<style>
+  /* ----- Hero ----- */
+  .hero {
+    padding-block: clamp(8.75rem, 8.18rem + 2.42vw, 10rem) var(--section-pad); /* top: 140 → 160px */
+    background: var(--lavender);
+  }
+
+  .hero__inner {
+    display: grid;
+    gap: 2rem;
+    justify-items: start;
+  }
+
+  .hero h1 {
+    max-width: 50rem;
+    font-weight: 700;
+  }
+
+  .hero p {
+    max-width: 43.5rem;
+  }
+
+  /* ----- About ----- */
+  .about,
+  .work,
+  .contact {
+    /* Lets the section's own top padding sit under the sticky header, as on the original site. */
+    scroll-margin-top: calc(var(--nav-height) * -1);
+  }
+
+  .about__block {
+    padding-block: 5rem;
+  }
+
+  .about__block--intro {
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 50.625em) {
+    .about__block--intro {
+      gap: 4rem;
+      padding-block: 7.5rem 3.75rem;
+    }
+
+    .about__block--background {
+      padding-block: 2.5rem 3.75rem;
+    }
+
+    .about__block--approach {
+      padding-block: 3.75rem 7.5rem;
+    }
+  }
+
+  .about__intro {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .about__cv {
+    margin-top: 2rem;
+  }
+
+  .approach {
+    display: grid;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .approach li {
+    display: grid;
+    gap: 0.75rem;
+    padding-bottom: clamp(1.5rem, 2.227rem - 0.97vw, 2rem); /* 32px on phones → 24px on desktop */
+    border-bottom: 1px solid var(--ink);
+  }
+
+  /* ----- Selected work ----- */
+  .work {
+    background: var(--lavender-soft);
+  }
+
+  .work__header {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .work__header p {
+    max-width: 42.5rem;
+  }
+
+  .work__featured,
+  .work__grid {
+    margin-top: clamp(2.5rem, 2.273rem + 0.97vw, 3rem); /* 40 → 48px */
+  }
+
+  .work__grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  @media (min-width: 50.625em) {
+    .work__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* ----- Get in touch ----- */
+  .contact h3 {
+    margin-top: 2.5rem;
+  }
+
+  .contact__body {
+    display: grid;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+  }
+
+  @media (min-width: 50.625em) {
+    .contact h3,
+    .contact__body {
+      margin-top: 1.5rem;
+    }
+
+    .contact__body {
+      grid-template-columns: minmax(0, 40rem) minmax(0, 26.375rem);
+      justify-content: space-between;
+    }
+  }
+
+  .contact__text p + p {
+    margin-top: 1.5em;
+  }
+
+  .contact__text a {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .contact__links {
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    list-style: none;
+  }
+
+  /* ----- Portrait ----- */
+  .portrait {
+    aspect-ratio: 24 / 11;
+    overflow: hidden;
+    background: var(--ink-deep);
+  }
+
+  .portrait :global(picture),
+  .portrait :global(img) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .portrait :global(img) {
+    object-fit: cover;
+  }
+</style>

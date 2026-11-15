@@ -1,0 +1,115 @@
+---
+// One project on the homepage: cover image, title with arrow, short summary.
+// The whole card is clickable, but only the title is announced as the link.
+import { Picture } from 'astro:assets';
+import Arrow from './Arrow.astro';
+import { projectUrl, type Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  /** The first project spans the full width. */
+  featured?: boolean;
+}
+
+const { project, featured = false } = Astro.props;
+
+// Tells the browser how wide the image is on screen so it can pick the smallest suitable file.
+const sizes = featured
+  ? '(min-width: 1440px) 1280px, 90vw'
+  : '(min-width: 1440px) 624px, (min-width: 810px) 44vw, 90vw';
+const widths = featured ? [480, 800, 1280, 1920, 2400] : [320, 480, 640, 960, 1280];
+
+// Keep the arrow attached to the last word so it never wraps onto a line of its own.
+const words = project.title.split(' ');
+const lastWord = words.pop();
+const leadingWords = words.join(' ');
+---
+
+<article class="card">
+  <div class="card__media">
+    <Picture
+      src={project.cover}
+      alt={project.coverAlt}
+      formats={['avif']}
+      fallbackFormat="webp"
+      widths={widths}
+      sizes={sizes}
+      loading="lazy"
+    />
+  </div>
+  <h3 class="card__title label">
+    <a href={projectUrl(project)}
+      >{leadingWords}{' '}<span class="card__title-end">{lastWord}<Arrow /></span></a
+    >
+  </h3>
+  <p class="card__summary lead muted">{project.summary}</p>
+</article>
+
+<style>
+  .card {
+    position: relative;
+  }
+
+  .card__media {
+    aspect-ratio: 319 / 200;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+    /* Soft tint shown for the moment before the image appears. */
+    background: rgb(38 62 74 / 0.06);
+  }
+
+  .card__media :global(picture),
+  .card__media :global(img) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .card__media :global(img) {
+    object-fit: cover;
+  }
+
+  .card__title {
+    margin-top: 1.5rem;
+  }
+
+  .card__title a {
+    text-decoration: none;
+  }
+
+  .card__title-end {
+    white-space: nowrap;
+  }
+
+  /* Stretch the title link over the whole card. */
+  .card__title a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-card);
+  }
+
+  .card__title a:focus-visible {
+    outline: none;
+  }
+
+  .card__title a:focus-visible::after {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+  }
+
+  .card:hover .card__title a {
+    text-decoration: underline;
+  }
+
+  .card__title :global(.arrow) {
+    transition: transform 0.2s ease;
+  }
+
+  .card:hover .card__title :global(.arrow) {
+    transform: translateX(0.25rem);
+  }
+
+  .card__summary {
+    margin-top: 0.5rem;
+  }
+</style>

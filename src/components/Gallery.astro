@@ -1,0 +1,15 @@
+---
+// A stack of wide images, placed between two sections of a case study.
+import type { ImageMetadata } from 'astro';
+import Figure from './Figure.astro';
+
+interface Props {
+  images: { src: ImageMetadata; alt: string }[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="container case-gallery">
+  {images.map((image) => <Figure src={image.src} alt={image.alt} size="wide" />)}
+</div>

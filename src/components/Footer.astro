@@ -1,0 +1,52 @@
+---
+// Site footer: call to action, email button, copyright and cookie settings.
+import Button from './Button.astro';
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <h2 class="subtitle">Interested in collaborating or learning more about my work?</h2>
+    <div class="site-footer__action">
+      <Button href={`mailto:${site.email}`}>Get in Touch</Button>
+    </div>
+    <p class="site-footer__legal">
+      <span>©{year} {site.author}. All rights reserved.</span>
+      <button type="button" class="site-footer__cookies" data-cookie-settings>
+        Cookie settings
+      </button>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block: clamp(5rem, 2.727rem + 9.7vw, 10rem); /* 80 → 160px */
+    background: var(--lavender);
+  }
+
+  .site-footer__action {
+    margin-top: 2.5rem;
+  }
+
+  .site-footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 1rem;
+    margin-top: 3rem;
+    font-size: var(--text-small);
+    line-height: 1.25rem;
+  }
+
+  .site-footer__cookies {
+    padding: 0.5rem 0;
+    border: 0;
+    background: none;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
+  }
+</style>

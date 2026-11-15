@@ -1,0 +1,139 @@
+---
+// Cookie consent banner for Google Analytics.
+//
+// How it works:
+// - Nothing from Google loads until the visitor presses "Accept".
+// - The choice is remembered in the browser (localStorage), so the banner shows once.
+// - "Cookie settings" in the footer reopens the banner so the choice can be changed.
+// - Declining after accepting removes the analytics cookies.
+// - Analytics only runs on the live domain, never on local or preview addresses.
+import { site } from '../data/site';
+---
+
+<section id="cookie-banner" class="cookie-banner" aria-label="Cookie consent" hidden>
+  <p>
+    This site uses Google Analytics cookies to count visits and see which pages are viewed. They
+    are only set if you accept.
+  </p>
+  <div class="cookie-banner__actions">
+    <button type="button" data-consent="granted">Accept</button>
+    <button type="button" data-consent="denied">Decline</button>
+  </div>
+</section>
+
+<script is:inline define:vars={{ gaId: site.gaId, productionHosts: site.productionHosts }}>
+  (function () {
+    var KEY = 'analytics-consent';
+    var banner = document.getElementById('cookie-banner');
+    var loaded = false;
+
+    function readChoice() {
+      try {
+        return localStorage.getItem(KEY);
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function saveChoice(value) {
+      try {
+        localStorage.setItem(KEY, value);
+      } catch (e) {}
+    }
+
+    function loadAnalytics() {
+      if (loaded || productionHosts.indexOf(location.hostname) === -1) return;
+      loaded = true;
+      window['ga-disable-' + gaId] = false;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+      window.gtag('js', new Date());
+      window.gtag('config', gaId);
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId);
+      document.head.appendChild(script);
+    }
+
+    function removeAnalytics() {
+      window['ga-disable-' + gaId] = true;
+      var expired = '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+      var host = location.hostname;
+      var domains = [host, '.' + host, '.' + host.split('.').slice(-2).join('.')];
+      document.cookie.split(';').forEach(function (cookie) {
+        var name = cookie.split('=')[0].trim();
+        if (name.indexOf('_ga') !== 0) return;
+        document.cookie = name + expired;
+        domains.forEach(function (domain) {
+          document.cookie = name + expired + '; domain=' + domain;
+        });
+      });
+    }
+
+    banner.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-consent]');
+      if (!button) return;
+      var choice = button.getAttribute('data-consent');
+      saveChoice(choice);
+      banner.hidden = true;
+      if (choice === 'granted') loadAnalytics();
+      else removeAnalytics();
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('[data-cookie-settings]')) return;
+      banner.hidden = false;
+      banner.querySelector('button').focus();
+    });
+
+    var saved = readChoice();
+    if (saved === 'granted') loadAnalytics();
+    else if (saved !== 'denied') banner.hidden = false;
+  })();
+</script>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 20;
+    display: grid;
+    gap: 1rem;
+    max-width: 26rem;
+    padding: 1.25rem;
+    border: 1px solid var(--ink);
+    border-radius: var(--radius-card);
+    background: var(--white);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .cookie-banner[hidden] {
+    display: none;
+  }
+
+  .cookie-banner__actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  /* Both buttons look the same so neither choice is favoured. */
+  .cookie-banner button {
+    flex: 1;
+    min-height: 2.75rem;
+    padding: 0.5rem 1rem;
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--ink);
+    color: var(--paper);
+    cursor: pointer;
+  }
+
+  .cookie-banner button:hover {
+    background: var(--ink-deep);
+  }
+</style>

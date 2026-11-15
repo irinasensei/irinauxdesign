@@ -1,0 +1,54 @@
+---
+// Sticky site header with the three section links.
+import { path } from '../utils/paths';
+
+const links = [
+  { href: path('/#work'), label: 'Work' },
+  { href: path('/#about'), label: 'About' },
+  { href: path('/#contact'), label: 'Contact' },
+];
+---
+
+<header class="site-header">
+  <nav class="container" aria-label="Main">
+    <ul class="site-nav">
+      {
+        links.map((link) => (
+          <li>
+            <a class="label" href={link.href}>
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--lavender);
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(1.25rem, 0.682rem + 2.42vw, 2.5rem); /* 20 → 40px */
+    min-height: var(--nav-height);
+    list-style: none;
+  }
+
+  .site-nav a {
+    display: inline-block;
+    padding-block: 0.5rem;
+    text-decoration: none;
+  }
+
+  .site-nav a:hover {
+    text-decoration: underline;
+  }
+</style>

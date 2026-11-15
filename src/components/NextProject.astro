@@ -1,0 +1,75 @@
+---
+// Band at the end of a case study that links to the next one.
+// The order comes from src/data/projects.ts; the last project links back to the first.
+import Arrow from './Arrow.astro';
+import { projects, projectUrl, type Project } from '../data/projects';
+
+interface Props {
+  current: Project;
+}
+
+const { current } = Astro.props;
+
+const index = projects.findIndex((project) => project.slug === current.slug);
+const next = projects[(index + 1) % projects.length];
+
+// Keep the arrow attached to the last word so it never wraps onto a line of its own.
+const words = next.title.split(' ');
+const lastWord = words.pop();
+const leadingWords = words.join(' ');
+---
+
+<section class="next" aria-labelledby="next-project">
+  <div class="container next__inner">
+    <h2 id="next-project" class="subtitle">Next project</h2>
+    <p class="next__title title">
+      <a href={projectUrl(next)}
+        >{leadingWords}{' '}<span class="next__title-end">{lastWord}<Arrow /></span></a
+      >
+    </p>
+  </div>
+</section>
+
+<style>
+  .next {
+    padding-block: clamp(2.5rem, 1.364rem + 4.85vw, 5rem); /* 40 → 80px */
+    background: var(--lavender);
+    /* Thin line so this band and the footer below read as two separate areas. */
+    border-bottom: 1px solid rgb(38 62 74 / 0.12);
+  }
+
+  .next__inner {
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
+  }
+
+  .next__title {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .next__title a {
+    text-decoration: none;
+  }
+
+  .next__title a:hover {
+    text-decoration: underline;
+  }
+
+  .next__title-end {
+    white-space: nowrap;
+  }
+
+  .next__title :global(.arrow) {
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: -0.35em;
+    transition: transform 0.2s ease;
+  }
+
+  .next__title a:hover :global(.arrow) {
+    transform: translateX(0.25rem);
+  }
+</style>
